@@ -1,0 +1,56 @@
+<launch>
+
+	<arg name="swarm_id"  default="0"/>
+	<arg name="x" default="2"/>
+	<arg name="y" default="0"/>
+	<arg name="z" default="0"/>
+	<arg name="other_id1" default="1"/>
+	<arg name="other_id2" default="2"/>
+	<arg name="other_id3" default="3"/>
+	<arg name="other_id4" default="4"/>
+	<arg name="other_id5" default="5"/>
+
+<!--	affine_transformation_node-->
+	<node pkg="camera_detect_offb" name="affine_transformation_$(arg swarm_id)" type="affine_transformation_node" output="screen">
+		<param name="swarm_ID" value="$(arg swarm_id)" type="int"/>
+		<param name="ctrl_rate" value="30"/>
+
+		<param name="other_id1" value="$(arg other_id1)" type="int"/>
+		<param name="other_id2" value="$(arg other_id2)" type="int"/>
+		<param name="other_id3" value="$(arg other_id3)" type="int"/>
+		<param name="other_id4" value="$(arg other_id4)" type="int"/>
+		<param name="other_id5" value="$(arg other_id5)" type="int"/>
+
+		<remap from="/mavros/state" to = "/uav$(arg swarm_id)/mavros/state"/>
+		<remap from="/mavros/local_position/pose" to = "/uav$(arg swarm_id)/mavros/local_position/pose"/>
+		<remap from="/mavros/setpoint_position/local" to = "/uav$(arg swarm_id)/mavros/setpoint_position/local"/>
+		<remap from="/mavros/cmd/arming" to = "/uav$(arg swarm_id)/mavros/cmd/arming"/>
+		<remap from="/mavros/set_mode" to = "/uav$(arg swarm_id)/mavros/set_mode"/>
+	</node>
+
+<!--	min_jerk_pva-->
+	<node pkg="pva_tracker" name="min_jerk_pva_$(arg swarm_id)" type="min_jerk_pva" output="screen">
+		<param name="swarm_ID" value="$(arg swarm_id)" type="int"/>
+		<param name="ctrl_rate" value="30"/>
+
+		<remap from="/mavros/state" to = "/uav$(arg swarm_id)/mavros/state"/>
+		<remap from="/mavros/local_position/pose" to = "/uav$(arg swarm_id)/mavros/local_position/pose"/>
+		<remap from="/mavros/setpoint_position/local" to = "/uav$(arg swarm_id)/mavros/setpoint_position/local"/>
+		<remap from="/mavros/cmd/arming" to = "/uav$(arg swarm_id)/mavros/cmd/arming"/>
+		<remap from="/mavros/set_mode" to = "/uav$(arg swarm_id)/mavros/set_mode"/>
+	</node>
+
+<!--	tracker-->
+	<node pkg="pva_tracker" name="tracker_$(arg swarm_id)" type="tracker" output="screen">
+		<param name="swarm_ID" value="$(arg swarm_id)" type="int"/>
+		<param name="ctrl_rate" value="30"/>
+
+		<remap from="/mavros/state" to = "/uav$(arg swarm_id)/mavros/state"/>
+		<remap from="/mavros/local_position/pose" to = "/uav$(arg swarm_id)/mavros/local_position/pose"/>
+		<remap from="/mavros/setpoint_position/local" to = "/uav$(arg swarm_id)/mavros/setpoint_position/local"/>
+		<remap from="/mavros/cmd/arming" to = "/uav$(arg swarm_id)/mavros/cmd/arming"/>
+		<remap from="/mavros/set_mode" to = "/uav$(arg swarm_id)/mavros/set_mode"/>
+	</node>
+
+
+</launch>

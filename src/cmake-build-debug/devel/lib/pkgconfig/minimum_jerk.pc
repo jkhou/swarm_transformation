@@ -1,0 +1,8 @@
+prefix=/home/hjk/swarm_ws/src/cmake-build-debug/devel
+
+Name: minimum_jerk
+Description: Description of minimum_jerk
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

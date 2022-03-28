@@ -1,0 +1,70 @@
+
+<launch>
+
+	 <include file="$(find camera_detect_offb)/launch/formation_one_agent.launch">
+		<arg name="swarm_id"  value="0"/>
+		<arg name="x" value="0"/>
+		<arg name="y" value="0"/>
+		<arg name="z" value="0"/>
+		<arg name="other_id1" value="1"/>
+		<arg name="other_id2" value="2"/>
+		<arg name="other_id3" value="3"/>
+		<arg name="other_id4" value="4"/>
+		<arg name="other_id5" value="5"/>
+    </include> 
+
+	<include file="$(find camera_detect_offb)/launch/formation_one_agent.launch">
+		<arg name="swarm_id"  value="1"/>
+		<arg name="x" value="0"/>
+		<arg name="y" value="0.0"/>
+		<arg name="z" value="0"/>
+		<arg name="other_id1" value="0"/>
+		<arg name="other_id2" value="2"/>
+		<arg name="other_id3" value="3"/>
+		<arg name="other_id4" value="4"/>
+		<arg name="other_id5" value="5"/>
+    </include>
+
+	<include file="$(find camera_detect_offb)/launch/formation_one_agent.launch">
+		<arg name="swarm_id"  value="2"/>
+		<arg name="x" value="0"/>
+		<arg name="y" value="0.0"/>
+		<arg name="z" value="0"/>
+		<arg name="other_id1" value="0"/>
+		<arg name="other_id2" value="1"/>
+		<arg name="other_id3" value="3"/>
+		<arg name="other_id4" value="4"/>
+		<arg name="other_id5" value="5"/>
+    </include>
+
+	<include file="$(find camera_detect_offb)/launch/formation_one_agent.launch">
+		<arg name="swarm_id"  value="3"/>
+		<arg name="x" value="0"/>
+		<arg name="y" value="0.0"/>
+		<arg name="z" value="0"/>
+		<arg name="other_id1" value="0"/>
+		<arg name="other_id2" value="1"/>
+		<arg name="other_id3" value="2"/>
+		<arg name="other_id4" value="4"/>
+		<arg name="other_id5" value="5"/>
+    </include>
+
+	<include file="$(find camera_detect_offb)/launch/formation_one_agent.launch">
+		<arg name="swarm_id"  value="4"/>
+		<arg name="x" value="0"/>
+		<arg name="y" value="0.0"/>
+		<arg name="z" value="0"/>
+		<arg name="other_id1" value="0"/>
+		<arg name="other_id2" value="1"/>
+		<arg name="other_id3" value="2"/>
+		<arg name="other_id4" value="3"/>
+		<arg name="other_id5" value="5"/>
+    </include>
+
+	<!--   armed cmd and set OFFBOARD mode -->
+	<node pkg="camera_detect_offb" type="swarm_offb_mode_node" name="swarm_offb_mode_node" output="screen" >
+	</node>
+
+<!--	<node pkg="rqt_reconfigure" type="rqt_reconfigure" output="screen" name="rqt_reconfigure" />-->
+
+</launch>

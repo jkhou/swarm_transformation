@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/hjk/swarm_ws/src/camera_detect_offb/cmake-build-debug/devel/setup.sh
